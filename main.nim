@@ -1,20 +1,23 @@
 import std/random
 import std/strutils
 
-proc counting(length: int) =
-    echo "\n"
+proc generate(length: int) =
+    stdout.write "Password: "
     for i in countup(1,length):
-        
-        echo "Toast x",i,"\r"
-
+        let characterset = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        let pick = sample(characterset)
+        doAssert pick in characterset
+        stdout.write pick
+    echo ""
 #-- Main ->
 
-echo "How Much?"
+echo "How Long?"
+var length: string = readLine(stdin)
 randomize()
 
-var length: string = readLine(stdin)
 try:
     var length_int = parseInt(length)
-    counting(length_int)
+    generate(length_int)
+
 except ValueError:
     echo "\nInvalid Type Provided\nPlease input a Number!"
