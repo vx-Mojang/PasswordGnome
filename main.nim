@@ -65,7 +65,9 @@ randomize()
 
 try:
     var length_int = parseInt(length)
-    generate(length_int,specialchar,numberchar)
-
+    if length_int > 0:
+        generate(length_int,specialchar,numberchar)
+    else:
+        echo "\nInvalid Length Provided\nPlease input a Number thats bigger then 0!"
 except ValueError:
     echo "\nInvalid Type Provided for Length\nPlease input a Number!"
