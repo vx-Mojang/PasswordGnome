@@ -30,7 +30,7 @@ proc option(question: string): bool =
 
 proc generate(length: int,specialchar: bool,numberchar:bool) =
     stdout.write "Password: "
-    for i in countup(1,length):
+    for i in 1..length:
         if specialchar:
             let specialcharacterset = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","!","?","$","%","&","=","-","_","#","'","*","+"]
             let pick = sample(specialcharacterset)
