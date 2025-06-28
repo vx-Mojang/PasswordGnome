@@ -53,21 +53,21 @@ proc generate(length: int,specialchar: bool,numberchar:bool) =
             stdout.write pick
     echo ""
 
-#-- Main ->
-MOTD()
+when isMainModule:
+    MOTD()
 
-echo "> How Long?"
-var length: string = readLine(stdin)
-var specialchar: bool = option("> Use Special Characters?")
-var numberchar: bool = option("> Use Numbers?")
+    echo "> How Long?"
+    var length: string = readLine(stdin)
+    var specialchar: bool = option("> Use Special Characters?")
+    var numberchar: bool = option("> Use Numbers?")
 
-randomize()
+    randomize()
 
-try:
-    var length_int = parseInt(length)
-    if length_int > 0:
-        generate(length_int,specialchar,numberchar)
-    else:
-        echo "\nInvalid Length Provided\nPlease input a Number thats bigger then 0!"
-except ValueError:
-    echo "\nInvalid Type Provided for Length\nPlease input a Number!"
+    try:
+        var length_int = parseInt(length)
+        if length_int > 0:
+            generate(length_int,specialchar,numberchar)
+        else:
+            echo "\nInvalid Length Provided\nPlease input a Number thats bigger then 0!"
+    except ValueError:
+        echo "\nInvalid Type Provided for Length\nPlease input a Number!"
