@@ -1,6 +1,23 @@
 import std/random
 import std/strutils
 
+proc MOTD() =
+    const motdmessage = """
+                __
+             .-'  |        mm@***@m@                                                  *@@@***@@m
+            /   <\|      m@@*     *@                                                    @@   *@@m
+           /     \'      @@*       * *@@@@@@@@m    m@@*@@m *@@@@@@@@m@@@@@m    mm@*@@   @@   m@@  m@*@@m   m@@*@@@ m@@*@@@
+           |_.- o-o      @!            @@    @@   @@*   *@@  @@    @@    @@   m@*   @@  @@@@@@@  @@   @@   @@   ** @@   **
+           / C  -._)\    @!m    *@@@@  @!    @@   @@     @@  !@    @@    @@   !@******  @@        m@@@!@   *@@@@@m *@@@@@m
+          /',        |   *!@m     @@   @!    !@   @@     !@  !@    !@    @@   !@m    m  @!       @!   !@        @@      @@
+         |   `-,_,__,'   !!!    *!@!!  !!    !!   !@     !!  !!    !!    !!   !!******  @!        !!!!:!   *!   @! *!   @!
+         (,,)====[_]=|   *:!!     !!   !!    !!   !!!   !!!  :!    :!    !!   :!!       !!       !!   :!   !!   !! !!   !!
+           '.   ____/      ::: : ::  : :::  :!: :  : : : : : :!:  :::   ::!:   : : :: :!:!:      :!: : !:  : :!:   : :!:
+            | -|-|_
+            |____)_)
+    """
+    stdout.write(motdmessage,"\n\n")
+
 proc option(question: string): bool =
     echo r"[y/N] ", question
     var yorn: string = readLine(stdin)
@@ -35,13 +52,14 @@ proc generate(length: int,specialchar: bool,numberchar:bool) =
             doAssert pick in characterset
             stdout.write pick
     echo ""
+
 #-- Main ->
+MOTD()
 
-echo "How Long?"
+echo "> How Long?"
 var length: string = readLine(stdin)
-var specialchar: bool = option("Use Special Characters?")
-var numberchar: bool = option("Use Numbers?")
-
+var specialchar: bool = option("> Use Special Characters?")
+var numberchar: bool = option("> Use Numbers?")
 
 randomize()
 
